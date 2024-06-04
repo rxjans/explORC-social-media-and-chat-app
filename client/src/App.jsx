@@ -1,9 +1,8 @@
-import { Button } from '@chakra-ui/react'
-import { useState } from 'react'
-import { Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import PostPage from './pages/PostPage'
 import UserPage from './pages/UserPage'
 
+import Header from './components/Header';
 
 function App() {
  
@@ -12,8 +11,9 @@ function App() {
     <>
       <div className='flex justify-center'>
         <div className='max-w-[620px] w-full'>
+          <Header />
           <Routes>
-            <Route path="/:username" element={<UserPagePage />} />
+            <Route path="/:username" element={<UserPage />} />
             <Route path="/:username/post/:pID" element={<PostPage />} />
           </Routes>
         </div>
