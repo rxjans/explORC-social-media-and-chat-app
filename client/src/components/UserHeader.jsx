@@ -1,23 +1,15 @@
 import { Avatar, Box, Flex, Link, Menu, MenuButton, MenuItem, MenuList, Portal, Text, VStack, useToast } from "@chakra-ui/react"
 import { BsInstagram } from "react-icons/bs";
 import { TbShare } from "react-icons/tb";
+import {toast} from 'react-toastify';
 
 const UserHeader = () => {
-    const toast = useToast();
     const copyURL = ()=>{
         const currURL = window.location.href;
         navigator.clipboard.writeText(currURL).then(()=>{
-            toast({
-                title: `Profile link Copied to clipboard`,
-                status: 'success',
-                isClosable: true,
-            })
+            toast.success("Link copied to profile");
         }).catch(()=>{
-            toast({
-                title: `Unknown error occurred. Please try again`,
-                status: 'error',
-                isClosable: true,
-            })
+            toast.error("Unknown error occurred. Please try again");
         });
     }
   return (
@@ -60,6 +52,14 @@ const UserHeader = () => {
                         </Portal>
                     </Menu>
                 </Box>
+            </Flex>
+        </Flex>
+        <Flex w={'full'}>
+            <Flex flex={1} borderBottom={'1.5px solid white'} justifyContent={'center'} pb='3' cursor={'pointer'}>
+                <Text fontWeight={'bold'}>Posts</Text>
+            </Flex>
+            <Flex flex={1} borderBottom={'1px solid gray'} color={'gray.light'} justifyContent={'center'} pb='3' cursor={'pointer'}>
+                <Text fontWeight={'bold'}>Replies</Text>
             </Flex>
         </Flex>
     </VStack>
