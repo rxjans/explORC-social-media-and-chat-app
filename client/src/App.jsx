@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <div className='flex justify-center'>
-        <div className='max-w-[620px] w-full'>
+        <div className='max-w-[640px] w-full px-4'>
           <Header />
           <Routes>
             <Route path="/:username" element={<UserPage />} />

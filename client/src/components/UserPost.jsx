@@ -10,7 +10,7 @@ import { BiSolidDownvote } from "react-icons/bi";
 import { FaRegComment } from "react-icons/fa";
 import { PiShareFatBold } from "react-icons/pi";
 
-const UserPost = () => {
+const UserPost = ({likes, replies, postImg, postTitle}) => {
   const [like, setLike] = useState(false);
   const [dislike, setDislike] = useState(false);
   return (
@@ -65,29 +65,29 @@ const UserPost = () => {
             </Flex>
           </Flex>
           <Text fontSize={"sm"}>
-            How I manage personal life while being a multi-millionaire
+            {postTitle}
           </Text>
-          <Box
+          {postImg && <Box
             borderRadius={6}
             border={"1px solid"}
             borderColor={"gray.light"}
             overflow={"hidden"}
           >
-            <Image w={"full"} src="/rxjans.png" />
-          </Box>
+            <Image w={"full"} src={postImg} />
+          </Box>}
           <Flex gap={3} my={1} alignItems={'center'}>
             <Flex gap={3} my={2} onClick={(e) => e.preventDefault()}>
               <Flex gap={1}>
                 {like ? (
                   <BiSolidUpvote
-                    className="text-blue-600 text-2xl "
+                    className="text-blue-600 text-xl "
                     onClick={() => {
                       setLike(!like);
                     }}
                   />
                 ) : (
                   <BiUpvote
-                    className="text-2xl"
+                    className="text-xl"
                     onClick={() => {
                       setLike(!like);
                       setDislike(false);
@@ -98,7 +98,7 @@ const UserPost = () => {
                 {dislike ? (
                   <BiSolidDownvote
                     onClick={() => setDislike(!dislike)}
-                    className="text-2xl text-red-500"
+                    className="text-xl text-red-500"
                   />
                 ) : (
                   <BiDownvote
@@ -106,19 +106,19 @@ const UserPost = () => {
                       setDislike(!dislike);
                       setLike(false);
                     }}
-                    className="text-2xl"
+                    className="text-xl"
                   />
                 )}
               </Flex>
-              <FaRegComment className="text-[23px] " />
-              <PiShareFatBold className="text-[23px] "/>
+              <FaRegComment className="text-xl " />
+              <PiShareFatBold className="text-xl "/>
             </Flex>
           </Flex>
 
           <Flex gap={2} alignItems={'center'}>
-            <Text fontSize={'sm'} color={'gray.light'}>120 replies</Text>
+            <Text fontSize={'sm'} color={'gray.light'}>{replies} replies</Text>
             <Box w={0.5} h={0.5} borderRadius={'full'} bg={'gray.light'}></Box>
-            <Text fontSize={'sm'} color={'gray.light'}>1249 likes</Text>
+            <Text fontSize={'sm'} color={'gray.light'}>{likes} likes</Text>
           </Flex>
 
         </Flex>
