@@ -9,6 +9,7 @@ import { BiDownvote } from "react-icons/bi";
 import { BiSolidDownvote } from "react-icons/bi";
 import { FaRegComment } from "react-icons/fa";
 import { PiShareFatBold } from "react-icons/pi";
+import Actions from "./Actions";
 
 const UserPost = ({likes, replies, postImg, postTitle}) => {
   const [like, setLike] = useState(false);
@@ -75,45 +76,8 @@ const UserPost = ({likes, replies, postImg, postTitle}) => {
           >
             <Image w={"full"} src={postImg} />
           </Box>}
-          <Flex gap={3} my={1} alignItems={'center'}>
-            <Flex gap={3} my={2} onClick={(e) => e.preventDefault()}>
-              <Flex gap={1}>
-                {like ? (
-                  <BiSolidUpvote
-                    className="text-blue-600 text-xl "
-                    onClick={() => {
-                      setLike(!like);
-                    }}
-                  />
-                ) : (
-                  <BiUpvote
-                    className="text-xl"
-                    onClick={() => {
-                      setLike(!like);
-                      setDislike(false);
-                    }}
-                  />
-                )}
-                <Text fontSize={"sm"}>{like ? "1" : "0"}</Text>
-                {dislike ? (
-                  <BiSolidDownvote
-                    onClick={() => setDislike(!dislike)}
-                    className="text-xl text-red-500"
-                  />
-                ) : (
-                  <BiDownvote
-                    onClick={() => {
-                      setDislike(!dislike);
-                      setLike(false);
-                    }}
-                    className="text-xl"
-                  />
-                )}
-              </Flex>
-              <FaRegComment className="text-xl " />
-              <PiShareFatBold className="text-xl "/>
-            </Flex>
-          </Flex>
+          
+          <Actions like={like} setLike={setLike} dislike={dislike} setDislike={setDislike} />
 
           <Flex gap={2} alignItems={'center'}>
             <Text fontSize={'sm'} color={'gray.light'}>{replies} replies</Text>
