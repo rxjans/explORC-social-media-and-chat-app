@@ -1,3 +1,3 @@
 # explORC-social-media-and-chat-app
 
-Explore Or Chat(MERN)
+Explore Or Chat(MERN) - chakraUI
