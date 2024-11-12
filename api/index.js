@@ -13,9 +13,20 @@ const PORT = process.env.PORT || 4000;
 app.use(express.json());
 app.use(cookieParser());
 
-// Routes 
-app.use('/api/user', userRoutes);   
+ 
 
 app.listen(PORT, ()=>{
     console.log(`Server started at http://localhost:${PORT}`)
 });
+// Routes 
+app.use('/api/user', userRoutes);  
+
+app.use((err, req, res, next)=> {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server error';
+    res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message
+    })
+})
